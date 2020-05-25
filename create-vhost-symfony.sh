@@ -128,6 +128,8 @@ mysql -uroot -p${rootpasswd} -e "FLUSH PRIVILEGES;"
 echo "Database and user created database: $MAINDB user: $MAINDB password: $PASSWDDB"
 
 if ! [ -f $rootPath/shared/.env.local ]; then
+	mkdir $rootPath/shared
+        chmod 755 $rootPath/shared
 	touch $rootPath/shared/.env.local
 fi
 if ! echo "DATABASE_URL='mysql://$MAINDB:$PASSWDDB@localhost:3306/$MAINDB'" > $rootPath/shared/.env.local
